@@ -13,5 +13,7 @@ extern char **environ;
 
 int _env(void);
 int _strlen(char *str);
+int _strcmp(char *s1, char *s2);
+int _exit(char *commandName)
 
 #endif
