@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "main.h"
+#include "shell.h"
 
 /**
  * _strdup - returns apointer to the newly allocated memory
