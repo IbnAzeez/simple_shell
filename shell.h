@@ -14,6 +14,9 @@ extern char **environ;
 int _env(void);
 int _strlen(char *str);
 int _strcmp(char *s1, char *s2);
-int _exit(char *commandName)
+int _exit(char *commandName);
+char *_strdup(char *str);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
 
 #endif
