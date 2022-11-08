@@ -8,7 +8,7 @@
  * _exit - exits the shell
  * @commandName: command name
  */
-int _exit(char *commandName)
+int _exitCommand(char *commandName)
 {
 	if (_strcmp(commandName, "exit") == 0)
 		exit(EXIT_SUCCESS);
