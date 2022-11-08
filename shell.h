@@ -10,11 +10,12 @@
 #include <sys/stat.h>
 
 extern char **environ;
+char *name;
 
 int _env(void);
 int _strlen(char *str);
 int _strcmp(char *s1, char *s2);
-int _exitCommand(char *commandName)
+/*int exit_command(char *commandName);*/
 char *_strdup(char *str);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);

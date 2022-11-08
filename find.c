@@ -17,7 +17,7 @@ char *find(char *command)
 	char *new = NULL;
 	struct stat buf;
 
-	new = malloc(sizeof(cahr) * 100);
+	new = malloc(sizeof(char) * 100);
 	if (_getenv("PATH")[0] == ':')
 		if (stat(command, &buf) == 0)
 			return (_strdup(command));

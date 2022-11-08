@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 			s[file_stream - 1]  = '\0';
 		if (*s == '\0')
 			continue;
-		if (commnd_line(s, file_stream) == 2)
+		if (command_line(s, file_stream) == 2)
 			break;
 	}
 	free(s);
