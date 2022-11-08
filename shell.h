@@ -18,5 +18,10 @@ int _exit(char *commandName);
 char *_strdup(char *str);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
+char *find(char *command);
+int _command(char *command_array[]);
+int _strn_cmp(char *s1, char *s2, int n);
+char *_getenv(char *variable);
+void _cannot_find(char *command);
 
 #endif
