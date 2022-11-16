@@ -23,7 +23,7 @@ char *_getenv(const char *name)
 	while (environ_copy[i] != NULL)
 	{
 		variable = environ_copy[i];
-		compare = _strncmp((char *)name, variable, length);
+		compare = _strn_cmp((char *)name, variable, length);
 		if (compare == 1)
 		{
 			value = strtok(variable, "=");

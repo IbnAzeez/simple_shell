@@ -4,7 +4,7 @@
  * **@tokens: arguments being passed
  * **Return: tokens
  **/
-int builtins(char **tokens)
+int builtin_exec(char **tokens)
 {
 	int status;
 	unsigned int length;

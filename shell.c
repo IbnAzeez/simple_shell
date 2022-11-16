@@ -23,7 +23,7 @@ int main(void)
 		tokens = tokenizer(line);
 		if (tokens[0] == NULL)
 			continue;
-		builtin_status = builtins(tokens);
+		builtin_status = builtin_exec(tokens);
 		if (builtin_status == 0 || builtin_status == -1)
 		{
 			free(tokens);
