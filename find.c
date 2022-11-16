@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * find - Takes PATH string, tokenizes it, then concats with "/" & cmd
- * @commandd: command passed from getline in main
+ * @command: command passed from getline in main
  * Return: new_path for use in cmd_read
  */
 char *find(char *command)
