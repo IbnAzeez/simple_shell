@@ -1,15 +1,12 @@
 #include "shell.h"
-
 /**
  * find - Takes PATH string, tokenizes it, then concats with "/" & cmd
- * @command: command passed from getline in main
- *
+ * @commandd: command passed from getline in main
  * Return: new_path for use in cmd_read
  */
-
 char *find(char *command)
 {
-	char *path = _strdup(_getenv("PATH"));
+	char *path = _strdup(_get("PATH"));
 	int i = 0, j = 0;
 	char *path_tokens = strtok(path, ":");
 	char *path_array[100];
@@ -18,7 +15,8 @@ char *find(char *command)
 	struct stat buf;
 
 	new = malloc(sizeof(char) * 100);
-	if (_getenv("PATH")[0] == ':')
+
+	if (_get("PATH")[0] == ':')
 		if (stat(command, &buf) == 0)
 			return (_strdup(command));
 	while (path_tokens != NULL)
@@ -33,7 +31,6 @@ char *find(char *command)
 		_strcat(new, "/");
 		_strcat(new, s2);
 		_strcat(new, "\0");
-
 		if (stat(new, &buf) == 0)
 		{
 			free(path);

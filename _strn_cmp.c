@@ -1,5 +1,3 @@
-#include "shell.h"
-
 /**
  * _strn_cmp - compares two strings up to n length
  * @s: string to search for
@@ -11,7 +9,7 @@ int _strn_cmp(char *s, char *var, unsigned int n)
 {
 	unsigned int i = 0;
 
-	while (i < length)
+	while (i < n)
 	{
 		if (s[i] != var[i])
 			return (-1);

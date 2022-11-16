@@ -1,47 +1,49 @@
 #include "shell.h"
 
 /**
- * main - print prompt, handle EOF, read file_stream
- * @argc: arg count
- * @argv: argv for command
- * Return: Always 0.
+ * main - main loop of shell
+ * Return: 0 on success
  */
-
-int main(int argc __attribute__((unused)), char **argv)
+int main(void)
 {
-	char *s;
-	size_t buf_size;
-	ssize_t file_stream;
-	char *name;
-
-	s = NULL;
-	buf_size = 0;
-	file_stream = 0;
-
-	/* Surpress warning of unused function argument*/
-	(void) argc;
-
-	name = argv[0];
+	char *line, *path, *fullpath;
+	char **tokens;
+	int flag, builtin_status, child_status;
+	struct stat buf;
 
 	while (1)
 	{
-		if (isatty(STDIN_FILENO) == 1)
-			write(1, "$ ", 2);
-		file_stream = getline(&s, &buf_size, stdin);
-		if (file_stream == -1)
+		prompt(STDIN_FILENO, buf);
+		line = _getline(stdin);
+		if (_strncmp(line, "\n", 1) == 0)
 		{
-			if (isatty(STDIN_FILENO) == 1)
-				write(1, "\n", 1);
-			break;
-		}
-		if (s[file_stream - 1]  == '\n')
-			s[file_stream - 1]  = '\0';
-		if (*s == '\0')
+			free(line);
 			continue;
-		if (command_line(s, file_stream) == 2)
-			break;
+		}
+		tokens = tokenizer(line);
+		if (tokens[0] == NULL)
+			continue;
+		builtin_status = builtins(tokens);
+		if (builtin_status == 0 || builtin_status == -1)
+		{
+			free(tokens);
+			free(line);
+		}
+		if (builtin_status == 0)
+			continue;
+		if (builtin_status == -1)
+			_exit(EXIT_SUCCESS);
+		flag = 0; /* 0 if full_path is not malloc'd */
+		path = _get("PATH");
+		fullpath = _search(tokens[0], fullpath, path);
+		if (fullpath == NULL)
+			fullpath = tokens[0];
+		else
+			flag = 1; /* if fullpath was malloc'd, flag to free */
+		child_status = child(fullpath, tokens);
+		if (child_status == -1)
+			errors(2);
+		free_all(tokens, path, line, fullpath, flag);
 	}
-	free(s);
-	s = NULL;
 	return (0);
 }

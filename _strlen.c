@@ -1,4 +1,3 @@
-#include "shell.h"
 
 /**
  * _strlen - returns the length of a string.
@@ -16,4 +15,3 @@ int _strlen(char *str)
 	}
 	return (i);
 }
-

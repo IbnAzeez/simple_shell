@@ -1,20 +1,18 @@
 #include "shell.h"
 
 /**
- * _getenv - prints environment
- * @variable: environ variable
- *
- * Return: 0
+ * _getenv - get environment variable
+ * @node: first node
+ * @env_name: environment variable name
+ * Return: environment variable node
  */
-
-char *_getenv(char *variable)
+environment_t *_getenv(environment_t *node, char *env_name)
 {
-	int i = 0;
+	if (node == NULL)
+		return (NULL);
 
-	for (i = 0; environ[i]; i++)
-	{
-		if (_strn_cmp(environ[i], variable, _strlen(variable)) == 0)
-			return (&environ[i][_strlen(variable)]);
-	}
-	return (NULL);
+	if (_strcmp(node->name, env_name) == 0)
+		return (node);
+
+	return (_getenv(node->next, env_name));
 }
