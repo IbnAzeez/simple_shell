@@ -80,7 +80,7 @@ void _prevDir(appData_t *data, char *CurrentDir);
 char *_create(char *env_name, char *env_value);
 char *_getenvname(char *variable);
 char *_getenvvalue(char *variable);
-int main(int argc, char *argv[]);
+int main(int argc __attribute__((unused)), char **argv);
 char **_strtow(char *str, char *separators, char *escape_separators);
 void _freeCharDoublePointer(char **ptr);
 
