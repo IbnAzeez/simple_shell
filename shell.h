@@ -20,7 +20,6 @@
 #define ERR_PATH "No such file or directory\n"
 
 extern char **environ;
-char *name;
 
 /**
  * struct environment_s - environment variable
@@ -100,9 +99,10 @@ int _command(char *command_array[]);
 char *_str_concat(char *S1, char *S2);
 void _setenv(environment_t *EnvList, char *env_name, char *env_value, int replace);
 environment_t *_getLast(environment_t *HdNode);
-environment_t *_getenv(environment_t *node, char *env_name);
+/*environment_t *_getenv(environment_t *node, char *env_name);*/
 environment_t *_createenv(char *global_env);
 void _changeDir(appData_t *data);
+list_s *pathlist(char *variable, list_s *head);
 void _anyDir(appData_t *data, char *CurrentDir);
 void _homeDir(appData_t *data, char *CurrentDir);
 void _prevDir(appData_t *data, char *CurrentDir);
@@ -126,5 +126,7 @@ char *_search(char *command, char *fullpath, char *path);
 int child(char *fullpath, char **tokens);
 void free_all(char **tokens, char *path, char *line, char *fullpath, int flag);
 void free_dp(char **array, unsigned int length);
+char **copy_env(char **environ_copy, unsigned int environ_length);
+char *_getenv(const char *name);
 
 #endif
