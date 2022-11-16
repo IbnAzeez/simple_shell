@@ -7,13 +7,14 @@
  * Return: Always 0.
  */
 
-char *name;
+/*char *name;*/
 
 int main(int argc, char *argv[])
 {
 	char *s;
 	size_t buf_size;
 	ssize_t file_stream;
+	char *name;
 
 	s = NULL;
 	buf_size = 0;
