@@ -7,6 +7,7 @@
  * @len: address of len var
  * Return: bytes read
  */
+
 ssize_t input_buf(info_t *info, char **buf, size_t *len)
 {
 	ssize_t r = 0;
@@ -48,6 +49,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
  * @info: parameter struct
  * Return: bytes read
  */
+
 ssize_t get_input(info_t *info)
 {
 	static char *buf; /* the ';' command chain buffer */
@@ -90,6 +92,7 @@ ssize_t get_input(info_t *info)
  * @i: size
  * Return: r
  */
+
 ssize_t read_buf(info_t *info, char *buf, size_t *i)
 {
 	ssize_t r = 0;
@@ -109,6 +112,7 @@ ssize_t read_buf(info_t *info, char *buf, size_t *i)
  * @length: size of preallocated ptr buffer if not NULL
  * Return: s
  */
+
 int _getline(info_t *info, char **ptr, size_t *length)
 {
 	static char buf[READ_BUF_SIZE];
@@ -116,6 +120,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	size_t k;
 	ssize_t r = 0, s = 0;
 	char *p = NULL, *new_p = NULL, *c;
+
 	p = *ptr;
 	if (p && length)
 		s = *length;
@@ -126,7 +131,8 @@ int _getline(info_t *info, char **ptr, size_t *length)
 		return (-1);
 	c = _strchr(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
-	new_p = _realloc(p, s, s ? s + k : k + 1);															if (!new_p) /* MALLOC FAILURE! */
+	new_p = _realloc(p, s, s ? s + k : k + 1);
+		if (!new_p) /* MALLOC FAILURE! */
 		return (p ? free(p), -1 : -1);
 	if (s)
 		_strncat(new_p, buf + i, k - i);
@@ -146,6 +152,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
  * @sig_num: signal number
  * Return: void
  */
+
 void sigintHandler(__attribute__((unused))int sig_num)
 {
 	_puts("\n");
